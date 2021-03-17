@@ -1,0 +1,76 @@
+/*Lucas Pinto, 56926*/
+
+#header {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    background-color: lightsalmon;
+    text-align: center;
+    padding: 1em;
+}
+
+#mobilidadeAtiva {
+    background-color: lightgreen;
+    padding: 1em;
+}
+
+#politicasMobilidade {
+    background-color: lightblue;
+    padding: 1em;
+}
+
+footer {
+    background-color: lightsalmon;
+    text-align: center;
+    padding: 1em;
+}
+
+nav {
+    position: fixed;
+    right: 1em;
+    top: 1em;
+}
+
+nav a {
+    background-color: white;
+    padding: 7px;
+    text-decoration-line: none;
+    font-size: 80%;
+}
+
+h1 {
+    font-size: 120%;
+}
+
+h2 {
+    font-size: 100%
+}
+
+@media only screen and (max-width: 599px) {
+    #content {
+        display: block;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    #content {
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+}
+
+@media only print {
+    body {
+        background-color: white;
+        color: black;
+        text-align: justify;
+    }
+
+    #content {
+        display: block;
+    }
+
+    nav {
+        display: none;
+    }
+
+}
