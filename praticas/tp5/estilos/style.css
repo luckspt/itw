@@ -1,4 +1,7 @@
 /*Lucas Pinto, 56926*/
+body {
+    font-family: sans-serif;
+}
 
 #header {
     grid-column-start: 1;
@@ -31,8 +34,8 @@ nav {
 }
 
 nav a {
-    background-color: white;
-    padding: 7px;
+    background-color: lightyellow;
+    padding: .5em;
     text-decoration-line: none;
     font-size: 80%;
 }
@@ -49,12 +52,24 @@ h2 {
     #content {
         display: block;
     }
+
+    img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 @media only screen and (min-width: 600px) {
     #content {
         display: grid;
         grid-template-columns: 50% 50%;
+    }
+
+    img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
@@ -63,6 +78,7 @@ h2 {
         background-color: white;
         color: black;
         text-align: justify;
+        font-family: "Times New Roman";
     }
 
     #content {
