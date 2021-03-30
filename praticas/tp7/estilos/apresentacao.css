@@ -1,0 +1,59 @@
+﻿
+/* ------------------------------------------------------------------------- */
+/* Introdução às Tecnologias Web - Departamento de Informática - FCUL.       */
+/* Apresentação para a aula teórico-prática sobre JavaScript (parte 2).      */
+/* ------------------------------------------------------------------------- */
+
+body {
+  margin: 0;
+}
+
+section, header {
+  padding: 1em;
+}
+
+header {
+  background-color: lightblue;
+}
+
+section#configuracao {
+  background-color: lightsalmon;
+}
+
+section#tentativas {
+  background-color: lightgreen;
+}
+
+/* ------------------------------------------------------------------------- */
+
+table {
+  text-align: center;
+  border-spacing: 0;
+}
+
+td, th {
+  padding: 3px 6px;
+}
+
+tr:first-of-type th {
+  border-top: 2px solid black;
+  border-bottom: 1px solid black;
+}
+
+tr:last-of-type td {
+  border-bottom: 2px solid black;
+}
+
+tr:hover {
+  background-color: rgb(0,0,0,0.1);
+}
+
+th:first-of-type, td:first-of-type {
+  border-left: 1px dotted black;
+}
+
+th:last-of-type, td:last-of-type {
+  border-right: 1px dotted black;
+}
+
+/* ------------------------------------------------------------------------- */
