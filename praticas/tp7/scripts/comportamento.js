@@ -164,7 +164,7 @@ function pedeNumeroTentativas() {
  */
 function pedeMinimoAleatorio() {
   // Exercício: Colocar aqui o código da função.
-  configuracao.minimoAleatorio = pedeNumeroInteiro(-Infinity, configuracao.maximoAleatorio, PROPOSITO_MINIMO_ALEATORIO)
+  configuracao.minimoAleatorio = pedeNumeroInteiro(Number.MIN_SAFE_INTEGER, configuracao.maximoAleatorio, PROPOSITO_MINIMO_ALEATORIO)
   mostraConfiguracaoJogo()  
 }
 
@@ -176,7 +176,7 @@ function pedeMinimoAleatorio() {
  */
 function pedeMaximoAleatorio() {
   // Exercício: Colocar aqui o código da função.
-  configuracao.maximoAleatorio = pedeNumeroInteiro(configuracao.minimoAleatorio, Infinity, PROPOSITO_MAXIMO_ALEATORIO)
+  configuracao.maximoAleatorio = pedeNumeroInteiro(configuracao.minimoAleatorio, Number.MAX_SAFE_INTEGER, PROPOSITO_MAXIMO_ALEATORIO)
   mostraConfiguracaoJogo()    
 }
 
