@@ -19,6 +19,12 @@ const MINIMO_ALEATORIO_OMISSAO = 1;
 /** Valor aleatório máximo por omissão. */
 const MAXIMO_ALEATORIO_OMISSAO = 100;
 
+/** Duração máxima por omissão. */
+const DURACAO_MAXIMA_OMISSAO = 60
+
+/** Duração mínima. */
+const DURACAO_MINIMA = 10
+
 /* ------------------------------------------------------------------------- */
 
 /** Célula que guarda o número de tentativas na tabela de configuração. */
@@ -29,6 +35,9 @@ const TD_MINIMO_ALEATORIO = "tdMinimoAleatorio";
 
 /** Célula que guarda o valor aleatório máximo na tabela de configuração. */
 const TD_MAXIMO_ALEATORIO = "tdMaximoAleatorio";
+
+/** Célula que guarda o valor da duração máxima na tabela de configuração. */
+const TD_DURACAO_MAXIMA = 'tdDuracaoMaxima'
 
 /* ------------------------------------------------------------------------- */
 
@@ -47,6 +56,15 @@ const BOTAO_INICIA_JOGO = "botaoIniciaJogo";
 /** Identificador do botão de fazer uma nova tentativa. */
 const BOTAO_FAZ_TENTATIVA = "botaoFazTentativa";
 
+/** Identificador do botão de cancelar um jogo. */
+const BOTAO_CANCELA_JOGO = 'btnCancelaJogo'
+
+/** Identificador span que mostra o tempo de jogo. */
+const SPAN_TEMPO_RESTANTE = 'spanTempoRestante'
+
+/** Identificador do botão de mudar o valor da duração máxima. */
+const BOTAO_DURACAO_MAXIMA = 'btnPedeDuracaoMaxima'
+
 /* ------------------------------------------------------------------------- */
 
 /** Propósito de tentar adivinhar o número aleatório. */
@@ -61,6 +79,9 @@ const PROPOSITO_MINIMO_ALEATORIO = "Para configurar o valor aleatório mínimo";
 /** Propósito de configurar o valor aleatório máximo do jogo. */
 const PROPOSITO_MAXIMO_ALEATORIO = "Para configurar o valor aleatório máximo";
 
+/** Propósito de configurar a duração máxima do jogo. */
+const PROPOSITO_DURACAO_MAXIMA = 'Para configurar a duração máxima'
+
 /* ------------------------------------------------------------------------- */
 
 /** Acertou no número aleatório. */
@@ -71,6 +92,12 @@ const RESULTADO_ABAIXO = "Demasiado baixo";
 
 /** Valor da tentativa ficou acima do número aleatório. */
 const RESULTADO_ACIMA = "Demasiado alto";
+
+/** Cancelou o jogo */
+const RESULTADO_CANCELOU = 'Jogo cancelado'
+
+/** Tempo esgotado */
+const RESULTADO_TEMPO_ESGOTADO = 'Tempo esgotado, jogo terminado.'
 
 /* ------------------------------------------------------------------------- */
 
@@ -84,7 +111,10 @@ let configuracao = {
   minimoAleatorio: MINIMO_ALEATORIO_OMISSAO,
 
   /** Valor aleatório máximo. */
-  maximoAleatorio: MAXIMO_ALEATORIO_OMISSAO
+  maximoAleatorio: MAXIMO_ALEATORIO_OMISSAO,
+
+  /** Duração máxima. */
+  duracaoMaxima: DURACAO_MAXIMA_OMISSAO  
 }
 
 /* ------------------------------------------------------------------------- */
@@ -99,8 +129,19 @@ let jogo = {
    * Array com todas as tentativas de adivinhar o número por parte do
    * utilizador. A última tentativa está no final do array.
    */
-  tentativas: null
+  tentativas: null,
+
+  /**  Timestamp de início do jogo */
+  inicio: null
 };
+
+/* ------------------------------------------------------------------------- */
+
+/** Temporizador de tempo restante do jogo */
+let temporizadorTempoRestante = null
+
+/** Temporizador da duraçao máxima do jogo */
+let temporizadorDuracaoMaxima = null
 
 /* ------------------------------------------------------------------------- */
 
@@ -140,7 +181,9 @@ function mostraConfiguracaoJogo() {
     configuracao.minimoAleatorio;
   // Exercício: Colocar aqui o código em falta.
   document.getElementById(TD_MAXIMO_ALEATORIO).innerHTML =
-    configuracao.maximoAleatorio
+    configuracao.maximoAleatorio  
+  document.getElementById(TD_DURACAO_MAXIMA).innerHTML =
+    configuracao.duracaoMaxima
 }
 
 /* ------------------------------------------------------------------------- */
@@ -180,6 +223,18 @@ function pedeMaximoAleatorio() {
   configuracao.maximoAleatorio = pedeNumeroInteiro(configuracao.minimoAleatorio, Number.MAX_SAFE_INTEGER, PROPOSITO_MAXIMO_ALEATORIO)
   mostraConfiguracaoJogo()    
 }
+
+/* ------------------------------------------------------------------------- */
+
+/**
+ * Pede ao utilizador a duração máxima do jogo, o qual tem de ser superior ou
+ * igual ao DURACAO_MINIMA.
+ */
+function pedeDuracaoMaxima() {
+  configuracao.duracaoMaxima = pedeNumeroInteiro(DURACAO_MINIMA, Number.MAX_SAFE_INTEGER, PROPOSITO_DURACAO_MAXIMA)
+  mostraConfiguracaoJogo()
+}
+
 
 /* ------------------------------------------------------------------------- */
 
@@ -285,16 +340,23 @@ function iniciaJogo() {
 
   // A configuração do jogo não pode ser alterada enquanto este não terminar.
   document.getElementById(BOTAO_INICIA_JOGO).disabled = true;
+  
   document.getElementById(BOTAO_NUMERO_TENTATIVAS).disabled = true;
   document.getElementById(BOTAO_MINIMO_ALEATORIO).disabled = true;
   // Exercício: Colocar aqui o código em falta.
   document.getElementById(BOTAO_MAXIMO_ALEATORIO).disabled = true;
+  document.getElementById(BOTAO_DURACAO_MAXIMA).disabled = true;
 
   // Inicialização do estado do jogo.
   jogo.numeroAleatorio =
     geraNumeroInteiroAleatorio(configuracao.minimoAleatorio,
                                configuracao.maximoAleatorio);
   jogo.tentativas = [];
+  jogo.inicio = Math.floor(Date.now() / 1000)
+
+  // Inicializar o temporizador de jogo
+  temporizadorTempoRestante = setInterval(mostraTempoRestante, 1000)
+  temporizadorDuracaoMaxima = setTimeout(() => terminaJogo(RESULTADO_TEMPO_ESGOTADO), configuracao.duracaoMaxima * 1000)
 
   // Podem estar a ser mostradas tentativas anteriores se este não for o
   // primeiro jogo, as quais devem ser removidas da tabela para se poder
@@ -303,6 +365,7 @@ function iniciaJogo() {
 
   // Permite que o utilizador faça tentativas para adivinhar o número.
   document.getElementById(BOTAO_FAZ_TENTATIVA).disabled = false;
+  document.getElementById(BOTAO_CANCELA_JOGO).disabled = false;
 }
 
 /* ------------------------------------------------------------------------- */
@@ -320,12 +383,17 @@ function terminaJogo(resultadoTentativaFinal) {
 
   // Neste jogo não é possível fazer mais tentativas para adivinhar o número.
   document.getElementById(BOTAO_FAZ_TENTATIVA).disabled = true;
+  document.getElementById(BOTAO_CANCELA_JOGO).disabled = true;
+
+  // Parar o temporizador do jogo
+  clearInterval(temporizadorTempoRestante)
 
   // Apresenta o resultado ao utilizador.
   if (resultadoTentativaFinal == RESULTADO_ACERTOU) {
     alert("Acertou! Era mesmo o número " + valorTentativaFinal + ".");
   } else {
-    alert("Talvez tenha mais sorte no próximo jogo!");
+    alert(resultadoTentativaFinal)
+    // alert("Talvez tenha mais sorte no próximo jogo!");
   }
 
   // Permite a configuração e início de um novo jogo.
@@ -333,6 +401,7 @@ function terminaJogo(resultadoTentativaFinal) {
   document.getElementById(BOTAO_MINIMO_ALEATORIO).disabled = false;
   document.getElementById(BOTAO_MAXIMO_ALEATORIO).disabled = false;
   document.getElementById(BOTAO_INICIA_JOGO).disabled = false;
+  document.getElementById(BOTAO_DURACAO_MAXIMA).disabled = false;
 }
 
 /* ------------------------------------------------------------------------- */
@@ -390,3 +459,17 @@ function geraNumeroInteiroAleatorio(minimo = MINIMO_ALEATORIO_OMISSAO,
 }
 
 /* ------------------------------------------------------------------------- */
+
+
+function cancelaJogo() {
+  terminaJogo(RESULTADO_CANCELOU)
+}
+
+function mostraTempoRestante() {
+  const diff = jogo.inicio + configuracao.duracaoMaxima - Math.floor(Date.now() / 1000)
+  document.getElementById(SPAN_TEMPO_RESTANTE).innerText = diff
+}
+
+function pedeDuracaoMaxima() {
+  configuracao.duracaoMaxima = pedeNumeroInteiro(DURACAO_MINIMA, Number.MAX_SAFE_INTEGER, PROPOSITO_DURACAO_MAXIMA)
+}

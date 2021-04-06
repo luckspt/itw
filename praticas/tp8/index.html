@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html lang="pt">
+
+<!-- ====================================================================== -->
+<!-- Introdução às Tecnologias Web - Departamento de Informática - FCUL.    -->
+<!-- ====================================================================== -->
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="estilos/apresentacao.css">
+  <script src="scripts/comportamento.js"></script>
+  <title>Exercícios de JavaScript (parte 2)</title>
+</head>
+
+<body>
+
+  <header>
+    <h1>Exercícios de JavaScript (parte 2)</h1>
+
+    <!-- Este parágrafo vai ser útil para o browser colocar uma mensagem -->
+    <!-- assim que tiver terminado o carregamento deste documento HTML.  -->
+    <p id="mensagem"></p>
+
+  </header>
+
+  <!-- ==================================================================== -->
+
+  <section id="configuracao">
+
+    <p>Configuração do jogo:</p>
+
+    <table>
+      <tr>
+        <th>Opção</th>
+        <th>Valor</th>
+        <th>Ação</th>
+      </tr>
+      <tr>
+        <td>Número de tentativas</td>
+        <td id="tdNumeroTentativas"></td>
+        <td><button id="botaoPedeNumeroTentativas"
+                    onclick="pedeNumeroTentativas()">Mudar</button></td>
+      </tr>
+      <tr>
+        <td>Valor aleatório mínimo</td>
+        <td id="tdMinimoAleatorio"></td>
+        <td><button id="botaoPedeMinimoAleatorio"
+                    onclick="pedeMinimoAleatorio()">Mudar</button></td>
+      </tr>
+      <tr>
+        <td>Valor aleatório máximo</td>
+        <td id="tdMaximoAleatorio"></td>
+        <td><button id="botaoPedeMaximoAleatorio"
+                    onclick="pedeMaximoAleatorio()">Mudar</button></td>
+      </tr>
+      <tr>
+        <td>Duração máxima</td>
+        <td id="tdDuracaoMaxima"></td>
+        <td><button id="btnPedeDuracaoMaxima"
+                    onclick="pedeDuracaoMaxima()">Mudar</button></td>
+      </tr>
+    </table>
+
+    <p><button id="botaoIniciaJogo" onclick="iniciaJogo()">Gerar um número
+               aleatório e começar um jogo</button></p>
+
+  </section>
+
+  <!-- ==================================================================== -->
+  <p>tem mais <span id="spanTempoRestante">0</span> segundos para jogar</p>
+
+  <!-- ==================================================================== -->
+
+  <section id="tentativas">
+
+    <p>Tentativas realizadas no jogo:</p>
+
+    <table>
+      <tr>
+        <th>Tentativa</th>
+        <th>Valor</th>
+        <th>Resultado</th>
+      </tr>
+    </table>
+
+    <p><button id="botaoFazTentativa"
+               onclick="fazTentativa()" disabled>Fazer uma nova
+               tentativa para adivinhar o número</button></p>
+
+    <p><button id="btnCancelaJogo"
+               onclick="cancelaJogo()" disabled>Cancelar Jogo</button></p>
+
+  </section>
+
+</body>
+
+<!-- ====================================================================== -->
+
+</html>
