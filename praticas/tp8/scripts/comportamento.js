@@ -235,7 +235,6 @@ function pedeDuracaoMaxima() {
   mostraConfiguracaoJogo()
 }
 
-
 /* ------------------------------------------------------------------------- */
 
 /**
@@ -288,6 +287,14 @@ function mostraTentativaAtual(numeroTentativa, valorTentativa,
   // da tabela de tentativas.
   document.querySelector("section#tentativas tr:last-of-type")
           .parentNode.appendChild(novaLinhaTentativa);
+}
+
+/* ------------------------------------------------------------------------- */
+
+/** Mostra o tempo restante do jogo no span */
+function mostraTempoRestante() {
+  const diff = jogo.inicio + configuracao.duracaoMaxima - Math.floor(Date.now() / 1000)
+  document.getElementById(SPAN_TEMPO_RESTANTE).innerText = diff
 }
 
 /* ------------------------------------------------------------------------- */
@@ -406,6 +413,13 @@ function terminaJogo(resultadoTentativaFinal) {
 
 /* ------------------------------------------------------------------------- */
 
+/** Cancela o jogo quando o botão de cancelar jogo é premido */
+function cancelaJogo() {
+  terminaJogo(RESULTADO_CANCELOU)
+}
+
+/* ------------------------------------------------------------------------- */
+
 /**
  * Tendo em conta um determinado propósito, pede um número inteiro ao
  * utilizador, o qual tem de estar dentro do intervalo de validade definido
@@ -456,20 +470,4 @@ function geraNumeroInteiroAleatorio(minimo = MINIMO_ALEATORIO_OMISSAO,
   const num = Math.floor(Math.random() * (maximo - minimo + 1) + minimo) 
   
   return isNaN(num) ? configuracao.maximoAleatorio : num;
-}
-
-/* ------------------------------------------------------------------------- */
-
-
-function cancelaJogo() {
-  terminaJogo(RESULTADO_CANCELOU)
-}
-
-function mostraTempoRestante() {
-  const diff = jogo.inicio + configuracao.duracaoMaxima - Math.floor(Date.now() / 1000)
-  document.getElementById(SPAN_TEMPO_RESTANTE).innerText = diff
-}
-
-function pedeDuracaoMaxima() {
-  configuracao.duracaoMaxima = pedeNumeroInteiro(DURACAO_MINIMA, Number.MAX_SAFE_INTEGER, PROPOSITO_DURACAO_MAXIMA)
 }
