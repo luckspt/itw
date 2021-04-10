@@ -1,0 +1,164 @@
+﻿<!-- Lucas Pinto, 56926, TP23 -->
+<!DOCTYPE html>
+<html lang="pt">
+
+<!-- ====================================================================== -->
+<!-- Introdução às Tecnologias Web - Departamento de Informática - FCUL.    -->
+<!--                                                                        -->
+<!-- Prefixos usados em identificadores de elementos:                       -->
+<!--  btn = <button>                                                        -->
+<!--  chk = <input type="checkbox">                                         -->
+<!--  dat = <input type="date">                                             -->
+<!--  frm = <form>                                                          -->
+<!--  num = <input type="number">                                           -->
+<!--  rad = <input type="radio">                                            -->
+<!--  sec = <section>                                                      -->
+<!--  sel = <select>                                                        -->
+<!--  tbl = <table>                                                         -->
+<!--  txt = <input type="text">                                             -->
+<!-- ====================================================================== -->
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="estilos/apresentacao.css">
+  <script src="scripts/comportamento.js"></script>
+  <title>Exercícios de Formulários</title>
+</head>
+
+<body>
+
+  <header>
+    <h1>Exercícios de Formulários</h1>
+  </header>
+
+  <!-- ==================================================================== -->
+
+  <section id="secEncomenda">
+
+    <h1>Encomenda de piza</h1>
+
+    <form id="frmEncomenda">
+
+      <fieldset>
+        <legend>Dados da piza</legend>
+
+        <!-- Exercício: Colocar aqui o campo de quantidade de pizas. -->
+        <label for="numQuantidade">Quantidade</label>
+        <input id="numQuantidade" type="number"
+               name="quantidade" value="1" required
+               min="1" max="9">
+
+        <label for="selTamanho">Tamanho</label>
+        <select id="selTamanho" name="tamanho">
+          <option value="Familiar" selected>Familiar</option>
+          <option value="Média">Média</option>
+        </select>
+
+        <p>Tipo de massa</p>
+
+        <label for="radAlta">Massa alta e fofa</label>
+        <input id="radAlta" type="radio"
+               name="massa" value="Massa alta e fofa" checked>
+
+        <label for="radFina">Massa fina e crocante</label>
+        <input id="radFina" type="radio"
+               name="massa" value="Massa fina e crocante">
+
+        <p>Ingredientes</p>
+
+        <label for="chkAnanas">Ananás</label>
+        <input id="chkAnanas" type="checkbox"
+               name="ingrediente" value="Ananás">
+
+        <label for="chkAzeitonas">Azeitonas</label>
+        <input id="chkAzeitonas" type="checkbox"
+               name="ingrediente" value="Azeitonas">
+               
+        <label for="chkCamarao">Camarão</label>
+        <input id="chkCamarao" type="checkbox"
+               name="ingrediente" value="Camarão">
+       
+        <label for="chkChourico">Chouriço</label>
+        <input id="chkChourico" type="checkbox"
+               name="ingrediente" value="Chouriço">
+      
+        <label for="chkCogumelos">Cogumelos</label>
+        <input id="chkCogumelos" type="checkbox"
+               name="ingrediente" value="Cogumelos">
+
+        <!-- Exercício: Colocar aqui os ingredientes em falta. -->
+        <label for="chkFiambre">Fiambre</label>
+        <input id="chkFiambre" type="checkbox"
+               name="ingrediente" value="Fiambre">
+
+        <label for="chkQueijo">Queijo</label>
+        <input id="chkQueijo" type="checkbox"
+               name="ingrediente" value="Queijo">
+
+        <label for="chkTomate">Tomate</label>
+        <input id="chkTomate" type="checkbox"
+               name="ingrediente" value="Tomate">
+
+      </fieldset>
+
+      <fieldset>
+        <legend>Dados do cliente</legend>
+
+        <label for="txtNome">Nome</label>
+        <input id="txtNome" type="text" 
+               name="nome" required
+               maxlength="40" size="10">
+
+        <!-- Exercício: Colocar aqui a morada e data de nascimento. -->
+        <label for="txtMorada">Morada</label>
+        <input id="txtMorada" type="text" 
+               name="morada" required
+               maxlength="80" size="20">
+
+        <label for="datNascimento">Data de nascimento</label>
+        <input id="datNascimento" type="date" 
+               name="dataNascimento" required
+               size="13">
+               
+      </fieldset>
+
+      <!-- O atributo type="button" é necessário, caso contrário -->
+      <!-- o botão faz submit dos dados do formulário.           -->
+      <button id="btnFazerEncomenda" type="button">Fazer encomenda</button>
+
+    </form>
+
+  </section>
+
+  <!-- ==================================================================== -->
+
+  <section id="secHistorico">
+
+    <h1>Histórico de encomendas</h1>
+
+    <p>
+      <!-- Exercício: Colocar aqui o botão para apagar o histórico. -->
+      <button id="btnApagarEncomendas" type="button">Apagar histórico de encomendas</button>
+    </p>
+
+    <table id="tblEncomendas">
+    </table>
+
+  </section>
+
+  <!-- ==================================================================== -->
+
+  <footer>
+    <p>
+      &copy; Docentes de Introdução às Tecnologias Web
+      <br>
+      <a href="mailto:docentes-itw@listas.di.ciencias.ulisboa.pt">
+        docentes-itw@listas.di.ciencias.ulisboa.pt</a>
+    </p>
+  </footer>
+
+</body>
+
+<!-- ====================================================================== -->
+
+</html>

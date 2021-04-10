@@ -1,0 +1,101 @@
+﻿
+/* ------------------------------------------------------------------------- */
+/* Introdução às Tecnologias Web - Departamento de Informática - FCUL.       */
+/* Apresentação para a aula teórico-prática sobre formulários.               */
+/* ------------------------------------------------------------------------- */
+
+body {
+  margin: 0;
+}
+
+header, section, footer {
+  padding: 1em;
+}
+
+header, footer {
+  background-color: lightblue;
+}
+
+section#secEncomenda {
+  background-color: lightsalmon;
+}
+
+section#secHistorico {
+  background-color: lightgreen;
+}
+
+h1, footer > p {
+  text-align: center;
+}
+
+/* ------------------------------------------------------------------------- */
+
+fieldset {
+  margin: 1em;
+  background-color: rgb(255, 255, 255, 0.3);
+}
+
+legend {
+  background-color: rgb(255, 255, 255, 0.7);
+  padding: 0.2em 0.5em;
+}
+
+label, fieldset > p {
+  display: inline-block;
+  width: 50%;
+  text-align: right;
+  margin: 0.2em 0;
+}
+
+fieldset > p {
+  margin-top: 0.6em;
+  font-style: italic;
+}
+
+label::after {
+  content: ":";
+}
+
+input#quantidadePiza {
+  width: 3em;
+}
+
+button {
+  display: block;
+  margin: 0 auto;
+}
+
+/* ------------------------------------------------------------------------- */
+
+table {
+  text-align: center;
+  border-spacing: 0;
+  margin: auto;
+}
+
+td, th {
+  padding: 3px 6px;
+}
+
+tr:first-of-type th {
+  border-top: 2px solid black;
+  border-bottom: 1px solid black;
+}
+
+tr:last-of-type td {
+  border-bottom: 2px solid black;
+}
+
+tr:hover {
+  background-color: rgb(0,0,0,0.1);
+}
+
+th:first-of-type, td:first-of-type {
+  border-left: 1px dotted black;
+}
+
+th:last-of-type, td:last-of-type {
+  border-right: 1px dotted black;
+}
+
+/* ------------------------------------------------------------------------- */
