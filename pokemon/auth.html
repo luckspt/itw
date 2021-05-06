@@ -1,0 +1,95 @@
+<!--
+ * ITW - Introdução às Tecnologias Web 2020/2021
+ * Grupo n. 10
+ * 
+ * Bernardo Rebelo  - 55856 - PL23
+ * Daniel Barreto   - 34989 - PL23
+ * Lucas Pinto      - 56926 - PL23
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="assets/styles/lib/base.css" rel="stylesheet" />
+    <link href="assets/styles/style.css" rel="stylesheet" />
+
+    <script src="assets/scripts/lib/jquery-3.6.0.min.js"></script>
+    <script src="assets/scripts/structures/Profile.js"></script>
+    <script src="assets/scripts/auth.js"></script>
+    <title>PokeGames | Auth</title>
+</head>
+<body>
+    <nav>
+        <div class="row align-center justify-center">
+            <div class="col-sm-10 col-md-8 col-lg-5 card">
+                <div class="row justify-center">
+                    <a class="col-sm-2 btn btn-gray" href="index.html">Home</a>
+                    <a class="col-sm-2 btn btn-gray" href="story.html">Story</a>
+                    <a class="col-sm-2 btn btn-gray" href="stats.html">Stats</a>
+                    <a class="col-sm-2 btn btn-gray" href="aboutus.html">About Us</a>
+                    <a class="col-sm-2 btn btn-blue" href="auth.html">Play Now</a>
+                    <a class="col-sm-2 btn btn-gray" href="datasheet.html">Datasheet</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container nav-space">
+        <section class="hero">
+            <div class="row align-center justify-center h-75 gap-3">
+                <div class="col-lg-5 card">
+                    <h2>Login</h2>
+                    <form id="login">
+                        <label for="lcred">Username / email:</label>
+                        <input required="required" type="text" id="lcred" name="lcred" />
+
+                        <label for="lpwd">Password:</label>
+                        <input required="required" type="password" id="lpwd" name="lpwd" />
+                        
+                        <input class="btn btn-gray" type="submit" value="Submit" />
+                    </form>
+                    <div class="rules mt-4">
+                    <h2>Before playing this game you must be aware of the following rules:</h2>
+                    <p>You start the game in a small village on pokémon world. Your objective is to go through the village, in the least time possible, until you reach a final
+                    destination.<br>Throughout the map live a myriad of hidden pokémon species ready
+                    to jump you if your paths cross. You and your chosen pokémon must fight bravely and catch them with your Poké Ball.<br></p>
+                    </div>
+                </div>
+                <div class="col-lg-5 card">
+                    <h2>Register</h2>
+                    <form id="register">
+                        <label for="runame">Username:</label>
+                        <input required="required" type="text" id="runame" name="runame" />
+
+                        <label for="remail">Email:</label>
+                        <input required="required" type="email" id="remail" name="remail" />
+
+                        <label for="rpwd">Password:</label>
+                        <input required="required" type="password" id="rpwd" name="rpwd" />
+
+                        <label for="rcpwd">Confirm Password:</label>
+                        <input required="required" type="password" id="rcpwd" name="rcpwd" />
+                        
+                        <label for="rgender">Gender:</label>
+                        <select required="required" id="rgender" name="rgender">
+                            <option>Choose Gender</option>
+                            <option value="Female">Female</option>
+                            <option value="Male">Male</option>
+                            <option value="Non-Binary">Non-Binary</option>
+                        </select>
+
+                        <label for="rage">Age:</label>
+                        <input required="required" type="number" min="3" max="99" id="rage" name="rage" />
+
+                        <input class="btn btn-gray" type="submit" value="Submit" />
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,131 @@
+/**
+ * ITW - Introdução às Tecnologias Web 2020/2021
+ * Grupo n. 10
+ * 
+ * Bernardo Rebelo  - 55856 - PL23
+ * Daniel Barreto   - 34989 - PL23
+ * Lucas Pinto      - 56926 - PL23
+ */
+
+.showcase {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: 200ms;
+}
+
+.pokedialog {
+  background-image: url("../images/dialogBoxFilled.png");
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.showcase img {
+  width: 55%;
+}
+
+#indexIframe {
+  height: 100vh;
+  width: 100%;
+  z-index: -99;
+  position: absolute;
+}
+
+#playnow {
+  font-size: 50px;
+  -webkit-text-stroke-width: 5px;
+}
+
+#playnowIcon {
+  color: #2F6EB5;
+}
+
+#btnPlay {
+  transform: translate(+50%, +70%);
+}
+
+#pokemonInventory img {
+  width: 100px;
+  height: 100px;
+  margin: auto;
+}
+
+#leaderboard th, #leaderboard td{
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+#leaderboard tr:hover {
+  background-color: #f5f5f5;
+}
+
+.container_story {
+  width: 100%;
+  padding-top: 100px;
+  padding-bottom: 450px;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.container_story2 {
+  width: 100%;
+  padding-top: 200px;
+  padding-bottom: 40px;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+.intro {
+  font-size: 16px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.box {
+  text-align: center;
+  padding: 30px;
+  margin-bottom: 30px;
+}
+.item {
+  text-align: center;
+}
+
+.story {
+  background: url("https://i.ibb.co/0crMt63/story11.png");
+  background-repeat: repeat-x;
+  background-color: rgba(78, 72, 91, 6);
+  padding-bottom: 240px;
+  padding-right: 100px;
+  padding-left: 100px;
+}
+
+.story2 {
+  background: url("https://i.ibb.co/3YjfK3r/story2-5.png");
+  padding-right: 100px;
+  padding-left: 100px;
+  padding-bottom: 0;
+}
+
+.row-story {
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+button {
+  background-color: black;
+  color: #fff
+}
+
+.sizefont {
+  font-size:x-large;
+} 

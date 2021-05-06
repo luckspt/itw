@@ -1,0 +1,237 @@
+/**
+ * ITW - Introdução às Tecnologias Web 2020/2021
+ * Grupo n. 10
+ * 
+ * Bernardo Rebelo  - 55856 - PL23
+ * Daniel Barreto   - 34989 - PL23
+ * Lucas Pinto      - 56926 - PL23
+ */
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body::after {
+    content: "";
+    position: absolute;
+    width: 100%; 
+    height: 100%;  
+    opacity: .9; 
+    z-index: -1;
+    background-image: url('../images/matrix/maps/fcul/map_4.jpg');
+}
+
+nav {
+    z-index: 1000;
+}
+
+.absMiddle {
+    position: absolute;
+    width: min(90vw, 90vh);
+    height: min(90vw, 90vh);
+    margin-left: calc(50vw - calc(min(90vw, 90vh) / 2));
+    margin-top: calc(50vh - calc(min(90vw, 90vh) / 2));
+}
+
+/* ******************************************** */
+
+#startMenu {
+    z-index: 900;
+    background-color: white;
+}
+
+#startMenu form {
+    margin: 50px;
+    display: none;
+}
+
+#startMenu input.img {
+    margin: 0;
+    padding: 0;
+    border: none;
+    appearance: none;
+    cursor: pointer;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 70px;
+    height: 50px;
+    transition: all 100ms ease-in;
+    filter: brightness(1.8) grayscale(1) opacity(.7);
+}
+
+#startMenu input.img:hover {
+    filter: brightness(1.2) grayscale(.5) opacity(.9);
+}
+
+#startMenu input.img:checked {
+    filter: none;
+}
+
+#pplist::before {
+    content: 'Players Registered: ';
+}
+
+/* ******************************************** */
+
+#gameMatrix {
+    display: grid;
+    z-index: 0;
+}
+
+#gameMatrix img {
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    width: 32px;
+    height: 32px;
+}
+
+/* ******************************************** */
+
+#pokemonSelector {
+    display: none;
+    z-index: 200;
+    background-color: white;
+    text-align: center;
+}
+
+#choosePokemonList {
+    display: grid;
+    margin-left: 10px;
+    gap: 10px;
+    overflow: auto;
+    height: calc(90% - 60px);
+}
+
+#choosePokemonList {
+    max-height: 25%;
+}
+
+/* ******************************************** */
+
+#battle {
+    text-align: center;
+    display: none;
+    z-index: 100;
+    background-color: white;
+}
+
+#battleMsg {
+    width: 100%;
+    display: none;
+}
+
+#stadium {
+    display: grid;
+    background-image: url('../images/battle/background.jpg');
+    background-repeat: no-repeat;
+}
+
+#stadium > div {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+#stadium img {
+    width: 60%;
+    height: 85%;
+    margin: auto;
+    
+    background-image: url('../images/battle/grass.png');
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
+
+#stadium .stats {
+    padding: 10px;
+    background-color: lightgray;
+    border-width: 3px;
+    border-radius: 10px;
+    border-color: black;
+    min-width: 50%;
+    max-width: 50%;
+    margin: auto;
+}
+
+#stadium .stats progress {
+    max-width: 80%;
+}
+
+#stadium .stats span.name {
+    display: block;
+    text-align: left;
+}
+
+.controls {
+    display: grid;
+    grid-template-columns: auto auto;
+    list-style-type: none;
+    text-align: center;
+    padding: 10px;
+}
+
+.controls button {
+    text-align: center;
+    width: 100%;
+    padding: 20px;
+}
+
+/* ******************************************** */
+
+#credits {
+    position: absolute;
+    width: 100vw;
+    z-index: 10000;
+    display: none;
+}
+
+#notOurCredits {
+    display: none;
+    z-index: 10001;
+    background-color: white;
+}
+
+/* ******************************************** */
+
+#playAgain {
+    position: absolute;
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    color: white;
+    text-align: center;
+    z-index: 10002;
+}
+
+#playAgain h1 {
+    margin-top: 50vh;
+}
+
+/* ******************************************** */
+
+@media (min-width: 0px) {
+    #choosePokemonList {
+        grid-template-columns: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    #choosePokemonList {
+        grid-template-columns: calc(50% - 10px) calc(50% - 10px);
+    }
+}
+
+@media (min-width: 992px) {
+}
+
+@media (min-width: 1200px) {
+    #choosePokemonList {
+        grid-template-columns: calc(33% - 10px) calc(33% - 10px) calc(33% - 10px);
+    }
+}

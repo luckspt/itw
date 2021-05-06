@@ -1,0 +1,107 @@
+/**
+ * ITW - Introdução às Tecnologias Web 2020/2021
+ * Grupo n. 10
+ * 
+ * Bernardo Rebelo  - 55856 - PL23
+ * Daniel Barreto   - 34989 - PL23
+ * Lucas Pinto      - 56926 - PL23
+ */
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-image: url('../../assets/images/retroworld.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+nav{
+    position: fixed;
+    z-index: 10;
+}
+
+@media only screen and (max-width: 599px) {
+    body {
+        padding: 1.5rem;
+    }
+    .container {
+        margin-top: 100px;
+    }
+    header {
+        text-align: center;
+    }
+    .team {
+        text-align: center;
+    }
+    #us img {
+        width: 40%;
+        height: auto;
+        border-radius: 50%;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .container {
+        margin-top: 60px;
+        display: grid;
+        grid-template-columns: 0.5fr 1.5fr;
+        position: relative;
+    }
+
+    header {
+        text-align: center;
+        grid-area: 1 / 1 / span 1 /span 4;
+        margin-bottom: 40px;
+    }
+
+    .webstory {
+        display: grid;
+        text-align: justify;
+        justify-content: center;
+        align-content: center;
+        padding: 1em;
+        grid-area: 2 / 1 / span 1 / span 1;
+    }
+
+    .team {
+        text-align: center;
+        grid-area: 2 / 2 / span 1 / span 2;
+        width: 100%;
+    }
+
+    .team h2 {
+        text-align: center;
+        grid-area: 2 / 2 / span 1 / span 4;
+    }
+
+    #us {
+        display: grid;
+        margin: 1rem;
+        padding: 20px;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 25px;
+    }
+
+    #us img{
+        width: 70%;
+        height: auto;
+        border-radius: 50%;
+    }
+
+    #b {
+        padding: 1rem;
+    }
+
+    #d {
+        padding: 1rem;
+    }
+
+    #l{
+        padding: 1rem;
+    }
+
+    a {
+        color:black;
+        text-decoration: none;
+    }
+}

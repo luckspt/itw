@@ -1,0 +1,86 @@
+<!--
+ * ITW - Introdução às Tecnologias Web 2020/2021
+ * Grupo n. 10
+ * 
+ * Bernardo Rebelo  - 55856 - PL23
+ * Daniel Barreto   - 34989 - PL23
+ * Lucas Pinto      - 56926 - PL23
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PokeGames</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="assets/styles/lib/base.css" rel="stylesheet" />
+  <link href="assets/styles/lib/font-awesome.min.css" rel="stylesheet" />
+  <link href="assets/styles/style.css" rel="stylesheet" />
+  
+  <script src="assets/scripts/lib/jquery-3.6.0.min.js"></script>
+  <script src="assets/scripts/landing.js"></script>
+</head>
+<body>
+    <section class="hero">
+      <iframe id="indexIframe" frameborder="0" src="https://youtube.com/embed/SbIA8FKhwl0?loop=1&autoplay=1&controls=0&showinfo=0&autohide=1&mute=1"></iframe>
+      <div class="row align-center justify-center h-75">
+        <div class="card col-md-9 col-lg-8 col-xl-6">
+          <h1 class="header text-center solidfont">PokeGames</h1>
+          <div class="links">
+            <div class="row">
+              <a class="col-sm btn btn-gray pixelfont" href="story.html">Story</a>
+              <a class="col-sm btn btn-gray pixelfont" href="stats.html">Stats</a>
+              <a class="col-sm btn btn-gray pixelfont" href="aboutus.html">About Us</a>
+              <a class="col-sm btn btn-gray pixelfont" href="auth.html">Play Now</a>
+              <a class="col-sm btn btn-gray pixelfont" href="datasheet.html">Datasheet</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="h-25">
+      <div class="row text-center justify-center">
+        <h1 id="playnow" class="solidfont">Play Now!</h1>
+        <i id="playnowIcon" class="fas fa-chevron-down fa-3x"></i>
+      </div>
+    </div>
+  </section>
+
+  <div class="row">
+    <section class="showcase" id="pokemonShowcase">
+      <div class="h-75">
+        <div class="row mt-8">
+          <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 pokedialog p-2 ml-5">
+            <div class="ml-2 row">
+              <div class="col-sm">
+                <h1><span class="header pixelfont"></span></h1>
+                <p><span class="description pixelfont"></span></p>
+              </div>
+              <div class="col-sm">
+                <button class="btn btn-blue" id="btnPlay">Start!</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-10 row justify-center text-center">
+          <div class="col-sm-3">
+            <img src="assets/images/pokemon/snorlax.png" id="showcaseSnorlax" alt="Snorlax Pokemon"/>
+          </div>
+          <div class="col-sm-3">
+            <img src="assets/images/pokemon/quilava.png" id="showcaseQuilava" alt="Quilava Pokemon"/>
+          </div>
+          <div class="col-sm-3">
+            <img src="assets/images/pokemon/ivysaur.png" id="showcaseIvysaur" alt="Ivysaur Pokemon"/>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <footer>
+    <p>Bernardo Rebelo, Daniel Barreto, Lucas Pinto &mdash; FCUL, 2021</p>
+  </footer>
+</body>
+</html>

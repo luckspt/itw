@@ -1,0 +1,145 @@
+<!--
+ * ITW - Introdução às Tecnologias Web 2020/2021
+ * Grupo n. 10
+ * 
+ * Bernardo Rebelo  - 55856 - PL23
+ * Daniel Barreto   - 34989 - PL23
+ * Lucas Pinto      - 56926 - PL23
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PokeGames | Game</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="assets/styles/lib/base.css" rel="stylesheet">
+    <link href="assets/styles/lib/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/styles/game.css" rel="stylesheet">
+
+    <script src="assets/scripts/lib/jquery-3.6.0.min.js"></script>
+    <script src="assets/scripts/structures/Pokemon.js"></script>
+    <script src="assets/scripts/structures/Player.js"></script>
+    <script src="assets/scripts/structures/Battle.js"></script>
+    <script src="assets/scripts/structures/Matrix.js"></script>
+    <script src="assets/scripts/structures/Game.js"></script>
+    <script src="assets/scripts/structures/Profile.js"></script>
+    <script src="assets/scripts/data/matrixes.js"></script>
+    <script src="assets/scripts/data/characters.js"></script>
+    <script src="assets/scripts/data/pokemons.js"></script>
+    <script src="assets/scripts/game.js"></script>
+</head>
+<body>
+  <nav>
+    <div class="row align-center justify-center">
+      <div class="col-sm-10 col-md-8 col-lg-5 card">
+        <div class="row justify-center">
+          <a class="col-sm-2 btn btn-gray" href="index.html">Home</a>
+          <a class="col-sm-2 btn btn-gray" href="story.html">Story</a>
+          <a class="col-sm-2 btn btn-gray" href="stats.html">Stats</a>
+          <a class="col-sm-2 btn btn-gray" href="aboutus.html">About Us</a>
+          <a class="col-sm-2 btn btn-gray" href="mapImport.html">Map Import</a>
+          <a class="col-sm-2 btn btn-gray" href="datasheet.html">Datasheet</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <noscript>Please enable JavaScript to run this game.</noscript>
+
+  <div class="absMiddle" id="startMenu">
+    <form id="fmatrix">
+      <h1 class="solidfont">Select a Map</h1>
+
+      <label for="mmatrixes">Available Maps</label>
+      <div id="mmatrixes"></div>
+
+      <input type="submit" value="Submit"/>
+    </form>
+
+    <form id="fplayer">
+      <h1 class="solidfont">Create a Player</h1>
+
+      <label for="pname">Player Name</label>
+      <input id="pname" placeholder="Jorge Carvalho" required/>
+
+      <label for="ppokemons">Starter Pokemon</label>
+      <div id="ppokemons"></div>
+
+      <label for="pcharacters">Character Image</label>
+      <div id="pcharacters"></div>
+
+      <input type="submit" value="Submit"/>
+
+      <span id="pplist">none</span>
+    </form>
+  </div>
+
+  <div class="absMiddle" id="gameMatrix">
+  </div>
+
+  <div class="absMiddle" id="battle">
+    <h1 class="solidfont">Fight!</h1>
+
+    <div id="stadium">
+      <div id="attack">
+        <div class="stats">
+          <span class="name pixelfont"></span>
+          <progress></progress>
+        </div>
+
+        <img class="stadiumChar" src="assets/images/matrix/transparent.png"></img>
+      </div>
+
+      <div id="defense">
+        <img class="stadiumChar" src="assets/images/matrix/transparent.png"></img>
+
+        <div class="stats">
+          <span class="name pixelfont"></span>
+          <progress></progress>
+        </div>
+      </div>
+
+      <div id="defensePokemon"></div>
+    </div>
+
+    <form id="battleControls">
+      <ul class="controls">
+        <li><button id="c1" value="capture" class="btn btn-gray">Capture</button></li>
+        <li><button id="c2" value="attack" class="btn btn-gray">Attack</button></li>
+        <li><button id="c3" value="rotate" class="btn btn-gray">Rotate</button></li>
+        <li><button id="c4" value="run" class="btn btn-gray">Run</button></li>
+      </ul>
+    </form>
+
+    <span id="battleMsg" class="pixelfont"></span>
+  </div>
+  
+  <div class="absMiddle" id="pokemonSelector">
+    <h1 class="solidfont">Choose your Pokemon</h1>
+    <p class="pixelfont">Player <i><span id="choosePokemonPlayerName"></span></i></p>
+    <div id="choosePokemonList""></div>
+  </div>
+
+  <div id="playAgain">
+    <h1>Game Over!</h1>
+    <button class="btn btn-gray">Play Again</button>
+  </div>
+
+  <!-- https://www.youtube.com/watch?v=CrL-lNtN140 -->
+  <video src="assets/video/control-credits.mp4" id="credits"></video>
+
+  <!-- https://www.youtube.com/watch?v=KXw8CRapg7k -->
+  <audio src="assets/audio/Queen_WeAreTheChampions.mp3" id="champions"></audio>
+
+  <!-- https://www.myinstants.com/instant/minecraft-hurt -->
+  <audio src="assets/audio/TF2FryingPanHit.mp3" id="unwalkableSound"></audio>
+
+  <!-- https://www.youtube.com/watch?v=l_Uo0VJihCU -->
+  <audio src="assets/audio/SonicGameOver.mp3" id="gameover"></audio>
+
+  <!-- https://www.youtube.com/watch?v=Kg9KGulhSbI -->
+  <audio src="assets/audio/SuperMarioLandMusic-Theme1_GameBoy.mp3" loop id="theme"></audio>
+</body>

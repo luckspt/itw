@@ -1,0 +1,100 @@
+<!--
+ * ITW - Introdução às Tecnologias Web 2020/2021
+ * Grupo n. 10
+ * 
+ * Bernardo Rebelo  - 55856 - PL23
+ * Daniel Barreto   - 34989 - PL23
+ * Lucas Pinto      - 56926 - PL23
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PokeGames | Story</title>
+  <link href="assets/styles/lib/base.css" rel="stylesheet" />
+  <link href="assets/styles/style.css" rel="stylesheet" />
+
+  <script src="assets/scripts/lib/jquery-3.6.0.min.js"></script>
+  <script src="assets/scripts/lib/smooth-scroll.js"></script>
+  <script src="assets/scripts/landing.js"></script>
+</head>
+<body>
+  <nav id="second">
+    <div class="row align-center justify-center">
+        <div class="col-sm-10 col-md-8 col-lg-5 card">
+            <div class="row justify-center">
+                <a class="col-sm-2 btn btn-gray" href="index.html">Home</a>
+                <a class="col-sm-2 btn btn-blue" href="story.html">Story</a>
+                <a class="col-sm-2 btn btn-gray" href="stats.html">Stats</a>
+                <a class="col-sm-2 btn btn-gray" href="aboutus.html">About Us</a>
+                <a class="col-sm-2 btn btn-gray" href="auth.html">Play Now</a>
+                <a class="col-sm-2 btn btn-gray" href="datasheet.html">Datasheet</a>
+            </div>
+        </div>
+    </div>
+  </nav>
+
+  <div class="story">
+    <section class="container_story">
+      <div class="intro"><h2 class="text-center col-sm-12 col-md-12 col-lg-12 solidfont">Story</h2></div>
+      <div class="row justify-center features">
+        <div class="col-sm-6 col-md-5 col-lg-5 item">
+          <div class="box">
+            <h3 class="name solidfont">Pokémon</h3>
+            <p class="description pixelfont sizefont">Learn about how Pokemon was created and more!</p>
+            <div class="text-center">
+              <button class="pixelfont" type="button" onclick="smoothScroll(document.getElementById('third'))">Learn More</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-6 item">
+          <div class="box">
+            <h3 class="name solidfont">Our Game</h3>
+            <p class="description pixelfont sizefont">Learn how the game will unfold!</p>
+            <div class="text-center">
+              <button class="pixelfont" type="button" onclick="smoothScroll(document.getElementById('fourth'))">Learn More</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="story2">
+    <section class="container_story2">
+      <div class="row justify-center">
+        <div class="col-sm-6 col-md-5 col-lg-4 item">
+            <h1 class="solidfont" id="third">Pokémon</h1>
+        </div>
+      </div>
+      <div class="row justify-center item">
+        <div class="col-sm-6 col-md-5 col-lg-10 item">
+          <p class="pixelfont sizefont" id="corpo">When it comes to Pokémon, you are either completely aware of it and have been following the games, the anime, the movies, the trading cards and everything else, or are completely bewildered by the Pokémon mania that’s gripping the Internet right
+              now. Regardless of which camp you are in, sit back, grab your beverage of choice and relax—we are going to take a trip back in time to the very beginning of Pokémon.Pokémon is short for “Pocket Monsters&quot;, the original Japanese name. The
+              franchise has its roots in a gaming magazine in the early 1980s in Japan—Game Freak, started by Satoshi Tajiri and Ken Sugimori. Tajiri was the writer, while Sugimori was the illustrator.<br />They soon realized that the arcade scene at the
+              time wasn’t too hot anymore and decided to develop games themselves. This included games that were published by Nintendo on the NES and Game Boy like Yoshi and even games for SEGA like Magical Tarurūto-kun on the Mega Drive, SEGA’s console.
+              In its time as a developer, Game Freak had its titles published by the likes of even Sony back then.<br />When Tajiri and Co. put forth the idea of Pokémon to Nintendo, though, the publishers didn’t really get it. However, Tajiri was given
+              the benefit of doubt thanks to the success of Game Freak’s previous titles, and he worked under the mentorship of Shigeru Miyamoto to create Pocket Monsters: Red and Green, a game that combined the collecting and trading of monsters. And thus
+              began a franchise that went on to become the second largest gaming franchise ever. (In case you are wondering, Mario is the largest, and it also happens to be owned by Nintendo.).<br />Credit to, livemint.com.</p>
+        </div>
+      </div>
+      <div class="row justify-center">
+        <div class="col-sm-6 col-md-5 col-lg-4 item">
+            <h1 class="solidfont" id="fourth">Our Game</h1>
+        </div>
+      </div>
+      <div class="row justify-center item">
+        <div class="col-sm-6 col-md-5 col-lg-10 item">
+            <p class="pixelfont sizefont"  id="corpo">Our game is going to be similar to the old Nintendo Platform Games, a 2D map with 2D characters, you can choose from 3 different Pokémons to be your best buddy, with him you form an extraordinary team!<br />Fight Bad Guys and keep the realm safe again, be the hero you always dreamt about.<br /><br /></p>
+        </div>
+      </div>
+      <div class="text-center">
+        <button class="pixelfont" type="button" onclick="smoothScroll(document.getElementById('second'))">TOP</button>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>Bernardo Rebelo, Daniel Barreto, Lucas Pinto &mdash; FCUL, 2021</p>
+  </footer>
+</body>

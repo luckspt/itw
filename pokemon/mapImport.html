@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokeGames | Map Import</title>
+
+    <link href="assets/styles/lib/base.css" rel="stylesheet" />
+
+    <script src="assets/scripts/lib/jquery-3.6.0.min.js"></script>
+    <script src="assets/scripts/data/matrixes.js"></script>
+
+    <style>
+        form {
+            position: absolute;
+        }
+
+        #matrix {
+            display: grid;
+            position: absolute;
+            width: min(90vw, 90vh);
+            height: min(90vw, 90vh);
+            margin-left: calc(50vw - calc(min(90vw, 90vh) / 2));
+            margin-top: calc(50vh - calc(min(90vw, 90vh) / 2));
+            z-index: 0;
+        }
+
+        #matrix .item {
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-width: 100%;
+            max-width: 100%;
+            min-height: 100%;
+            max-height: 100%;
+        }
+
+        #messageBox {
+            z-index: 10000;
+            display: none;
+            background-color: red;
+            text-align: center;
+            font-size: xx-large;
+            border: 10px dashed yellow;
+            color: white;
+            position: absolute;
+            width: min(90vw, 90vh);
+            height: min(90vw, 90vh);
+            margin-left: calc(50vw - calc(min(90vw, 90vh) / 2));
+            margin-top: calc(50vh - calc(min(90vw, 90vh) / 2));
+        }
+
+        #copyTxt {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="row align-center justify-center">
+            <div class="col-sm-10 col-md-8 col-lg-5 card">
+                <div class="row justify-center">
+                    <a class="col-sm-2 btn btn-gray" href="index.html">Home</a>
+                    <a class="col-sm-2 btn btn-gray" href="story.html">Story</a>
+                    <a class="col-sm-2 btn btn-gray" href="stats.html">Stats</a>
+                    <a class="col-sm-2 btn btn-gray" href="aboutus.html">About Us</a>
+                    <a class="col-sm-2 btn btn-gray" href="auth.html">Play Now</a>
+                    <a class="col-sm-2 btn btn-gray" href="datasheet.html">Datasheet</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <div id="messageBox">
+        <span id="message"></span>
+        <button id="copy">Copy</button>
+        <span id="copyTxt"></span>
+    </div>
+
+    <div>
+        <form id="mainForm">
+            <h1>Map Data</h1>
+            <label for="fname">Map name</label><br/>
+            <input id="fname" name="name" placeholder="fcul" required/><br/>
+            <label for="fwidth">Map width</label><br/>
+            <input id="fwidth" name="width" type="number" min="0" placeholder="50" required/><br/>
+            <label for="fheight"><Map height/label><br/>
+            <input id="fheight" name="height" type="number" min="0" placeholder="50" required/><br/>
+            <label for="fSWidth">Sub-Matrix width</label><br/>
+            <input id="fSWidth" name="subMatrixWidth" type="number" min="0" value="10" required/><br/>
+            <label for="fSHeight">Sub-Matrix height</label><br/>
+            <input id="fSHeight" name="subMatrixHeight" type="number" min="0" value="10" required/><br/>
+
+            <input type="submit" value="Submit" id="mfSubmit"><br/>
+        </form>
+    </div>
+
+    <div>
+        <form id="formSettings">
+            <h1>Selectors</h1>
+            <input id="fsUnwalkable" type="radio" name="selecting" value="unwalkable" checked>
+            <label for="fsUnwalkable">Unwalkable</label><br/>
+            <input id="fsHostile" type="radio" name="selecting" value="hostile">
+            <label for="fsHostile">Hostile</label><br/>
+            <input id="fsFinish" type="radio" name="selecting" value="finish">
+            <label for="fsFinish">Finish</label><br/>
+
+            <input type="submit" value="Done" id="msSubmit"><br/>
+        </form>
+    </div>
+
+    <div id="matrix"></div>
+
+    <script>
+        const colors = {'finish': 'green', 'unwalkable': 'red', 'hostile': 'yellow'}
+        $('#formSettings').hide()
+
+        let width, height, sWidth, sHeight, mapName;
+        $('#mainForm').submit(d => {
+            const data = $('#mainForm').serializeArray()
+            mapName = data[0].value
+            width = parseInt(data[1].value)
+            height = parseInt(data[2].value)
+            sWidth = parseInt(data[3].value)
+            sHeight = parseInt(data[4].value)
+
+            $('#mainForm').fadeOut()
+            $('#formSettings').show()
+
+            build()
+            d.preventDefault()
+        })
+
+        let selecting = 'unwalkable';
+        $('#formSettings').change(() => {
+            selecting = $('input[name=selecting]:checked', '#formSettings').val()
+        })        
+
+        let matrix = {}
+        function build() {
+            if (matrixes[mapName]) matrix = matrixes[mapName]
+            else matrix = { unwalkable: []
+                        , hostile: []
+                        , finish: 0
+                        , mapName
+                        , size: { width, height }
+                        , subMatrix: { x: 0, y: 0, width: sWidth, height: sHeight } }
+
+            $('#matrix').css('grid-template-columns', `auto${' auto'.repeat(width-1)}`)
+
+            createElements()
+            display()
+
+            $('.item').on('click', d => {
+                const id = parseInt(d.target.id.substring(1))
+                let remove = false
+
+                if (selecting === 'finish') {
+                    if (matrix[selecting] === id) {
+                        matrix[selecting] = -1
+                        remove = true
+                    } else
+                        matrix[selecting] = id
+                } else {
+                    const idx = matrix[selecting].indexOf(id)
+                    if (idx !== -1) {
+                        matrix[selecting].splice(idx, 1)
+                        remove = true
+                    } else
+                        matrix[selecting].push(id)
+                }
+
+                if (!remove)
+                    $(`#i${id}`).prop('src', `assets/images/matrix/${colors[selecting]}.png`)
+                else
+                    $(`#i${id}`).prop('src', `assets/images/matrix/transparent.png`)
+
+                    // $(`#i${id}`).css('backgroud-image', `url("assets/images/matrix/maps/${matrix.mapName}/map_${id}.jpg")`)
+            })
+        }
+
+        function createElements() {
+            const els = []
+            for (let i = 1; i < (height * width) + 1; i++) {
+                els.push( $(`<img class="item" id="i${i}" src="assets/images/matrix/transparent.png"></img>`) )
+            }
+
+            $('#matrix').append(els)
+        }
+
+        function display() {
+            for (let i = 1; i < (height * width) + 1; i++) {
+                const element = $(`#i${i}`)
+                if (matrix.unwalkable.includes(i))
+                    element.prop('src', `assets/images/matrix/${colors.unwalkable}.png`)
+                else if (matrix.hostile.includes(i))
+                    element.prop('src', `assets/images/matrix/${colors.hostile}.png`)
+                else if (matrix.finish === i)
+                    element.prop('src', `assets/images/matrix/${colors.finish}.png`)
+                element.css('background-image', `url("assets/images/matrix/maps/${matrix.mapName}/map_${i}.jpg")`)
+            }
+        }
+
+        // source: https://codepen.io/shaikmaqsood/pen/XmydxJ
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+        }
+
+        
+        $('#formSettings').submit(d => {
+            matrix.unwalkable = matrix.unwalkable.sort((a, b) => a - b)
+            matrix.hostile = matrix.hostile.sort((a, b) => a - b)
+            $('#copyTxt').text(JSON.stringify(matrix))
+            $('#message').text('Done! Click the button below to copy, head over to @/assets/js/data/matrixes.js file, add a colon after the penultimate and paste what you copied from your browser.')
+            $('#messageBox').show()
+
+            $('#copy').click(() => {
+                copyToClipboard($('#copyTxt'))
+            })
+
+            d.preventDefault()
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+{
+  "name": "pokemon",
+  "version": "1.0.0",
+  "description": "Website de ITW sobre o projeto do jogo de tabuleiro pokemon",
+  "scripts": {
+    "lint": "npx eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bernardo-rebelo/itwtrab.git"
+  },
+  "keywords": [
+    "pokemon",
+    "itw",
+    "projeto",
+    "fcul"
+  ],
+  "author": "Bernardo Rebelo, Daniel Barreto, Lucas Pinto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bernardo-rebelo/itwtrab/issues"
+  },
+  "homepage": "https://github.com/bernardo-rebelo/itwtrab#readme",
+  "devDependencies": {
+    "@types/jquery": "^3.5.5",
+    "eslint": "^7.13.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
+  }
+}
