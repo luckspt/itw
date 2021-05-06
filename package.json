@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/luckspt/itw/issues"
   },
-  "homepage": "https://github.com/luckspt/itw#readme",
+  "homepage": "https://itw.lucks.pt/",
   "dependencies": {
     "jquery": "^3.6.0"
   },
